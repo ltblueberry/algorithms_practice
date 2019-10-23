@@ -1,7 +1,7 @@
 import time
 
 
-def dump_search(list, item):
+def dumb_search(list, item):
     for i in range(0, len(list)):
         if list[i] == item:
             return i
@@ -24,16 +24,15 @@ def binary_search(list, item):
     return None
 
 
+def checkTimeFor(title, additional, completion):
+    start = time.time()
+    result = completion(my_list, 44)
+    end = time.time()
+    print "{} = {}".format(title, result)
+    print "{} = ".format(additional) + "%s seconds" % (end-start)
+
+
 my_list = [1, 2, 4, 8, 11, 12, 13, 25, 26, 32, 44, 54, 87]
 
-start1 = time.time()
-result = binary_search(my_list, 44)
-end1 = time.time()
-print "Found index = {}".format(result)
-print "O(log2 n) = " + "%s seconds" % (end1-start1)
-
-start2 = time.time()
-result = dump_search(my_list, 44)
-end2 = time.time()
-print "\nFound index = {}".format(result)
-print "O(n) = " + "%s seconds" % (end2-start2)
+checkTimeFor("Binary search Index", "O(log2 n)", binary_search)
+checkTimeFor("Dumb search Index", "O(n)", dumb_search)
